@@ -47,12 +47,23 @@
           Add Steps
         </button>
         <button
+          [hidden]="updateTask"
           type="submit"
           (click)="createTask()"
           mat-raised-button
           color="primary"
         >
           Create Task
+        </button>
+
+        <button
+          *ngIf="updateTask"
+          type="submit"
+          (click)="createTask()"
+          mat-raised-button
+          color="primary"
+        >
+          Update Task
         </button>
       </form>
     </mat-card-content>

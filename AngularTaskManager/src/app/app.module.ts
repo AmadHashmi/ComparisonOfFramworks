@@ -10,7 +10,7 @@ import { TaskComponent } from './components/task/task.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FlexLayoutModule } from '@angular/flex-layout';
 // material imports
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,6 +18,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { MatChipsModule } from '@angular/material/chips';
     AppRoutingModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
+    FlexLayoutModule,
     //imports for material
     MatToolbarModule,
     MatButtonModule,
@@ -40,6 +42,7 @@ import { MatChipsModule } from '@angular/material/chips';
     MatFormFieldModule,
     MatInputModule,
     MatChipsModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

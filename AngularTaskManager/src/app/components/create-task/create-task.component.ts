@@ -6,23 +6,41 @@ import {
   FormArray,
   FormControl,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Task } from 'src/app/models/task';
+import { TaskService } from 'src/app/services/task.service';
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
   styleUrls: ['./create-task.component.scss'],
 })
 export class CreateTaskComponent {
+  updateTask = false;
   taskForm!: FormGroup;
-
-  constructor(private fb: FormBuilder, private router: Router) {}
+  task!: Task;
+  constructor(
+    private tasksService: TaskService,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
-    this.taskForm = this.fb.group({
-      title: ['', Validators.required],
-      description: ['', Validators.required],
-      subTasks: this.fb.array([]),
-      newSubTask: [''],
+    this.route.params.subscribe((params) => {
+      const taskId = +params['id'];
+      if (taskId) {
+        this.updateTask = true;
+        this.tasksService.getSingleTask(taskId).subscribe((data) => {
+          data!.id = taskId;
+          this.task = data;
+
+          this.initForm(data!);
+        });
+      } else {
+        this.initTaskwithDummyValue();
+        this.initForm(this.task);
+        this.updateTask = false;
+      }
     });
   }
 
@@ -53,8 +71,33 @@ export class CreateTaskComponent {
     if (this.taskForm.invalid) {
       return;
     }
-    // Handle the creation of the task (you can implement your logic here)
-    console.log('Task Created:', this.taskForm.value);
-    this.router.navigate(['']);
+
+    const { newSubtask, ...newTaskWithoutNewSubtask } = this.taskForm.value;
+    if (this.updateTask) {
+      newTaskWithoutNewSubtask.id = this.task.id;
+      this.tasksService.updateTask(newTaskWithoutNewSubtask);
+      this.router.navigate(['']);
+    } else {
+      this.tasksService.addTask(newTaskWithoutNewSubtask);
+      this.router.navigate(['']);
+    }
+  }
+
+  initForm(task: Task) {
+    this.taskForm = this.fb.group({
+      title: [task.title, Validators.required],
+      description: [task.description, Validators.required],
+      subTasks: this.fb.array(task.subTasks),
+      newSubTask: [''],
+    });
+  }
+
+  initTaskwithDummyValue() {
+    this.task = {
+      id: 0,
+      title: '',
+      description: '',
+      subTasks: [],
+    };
   }
 }

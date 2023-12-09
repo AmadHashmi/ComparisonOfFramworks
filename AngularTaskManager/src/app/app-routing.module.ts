@@ -6,7 +6,7 @@ import { TasksListComponent } from './components/tasks-list/tasks-list.component
 const routes: Routes = [
   { path: '', component: TasksListComponent },
   { path: 'create', component: CreateTaskComponent },
-  { path: 'update/:id', component: CreateTaskComponent },
+  { path: 'create/:id', component: CreateTaskComponent },
   { path: '**', redirectTo: '' },
 ];
 
