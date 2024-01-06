@@ -1,0 +1,29 @@
+<!-- note-list.component.html -->
+
+<div class="note-list-container" fxLayout="column" fxGap="10px">
+  <div
+    class="note-item-header"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div fxFlex="70%">Note Title</div>
+    <div fxFlex="30%">Actions</div>
+  </div>
+
+  <div
+    *ngFor="let note of notes"
+    class="note-item"
+    fxLayout="row"
+    fxLayoutAlign="space-between center"
+  >
+    <div fxFlex="70%">{{ note.title }}</div>
+    <div fxFlex="30%" fxLayout="row" fxLayoutGap="5px">
+      <button mat-icon-button color="primary" (click)="updateNote(note.id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" (click)="deleteNote(note.id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

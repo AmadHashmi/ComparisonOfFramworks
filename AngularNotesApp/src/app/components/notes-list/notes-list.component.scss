@@ -1,0 +1,24 @@
+/* styles.css (or your component-specific CSS file) */
+
+.note-list-container {
+  margin: 20px;
+}
+
+.note-item-header {
+  background-color: #f0f0f0;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+}
+
+.note-item {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.note-item:hover {
+  background-color: #f9f9f9;
+}
