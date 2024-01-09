@@ -44,29 +44,6 @@ export class CreateNoteComponent {
     });
   }
 
-  // get subNotes() {
-  //   return (this.taskForm.controls['subNotes'] as FormArray).controls;
-  // }
-
-  // addSubNote() {
-  //   const subNotes = this.taskForm.controls['subNotes'] as FormArray;
-  //   const newSubNote = this.taskForm.controls['newSubNote'];
-
-  //   subNotes.push(new FormControl(newSubNote.value));
-  //   newSubNote.setValue('');
-  // }
-
-  // addSubtaskOnEnter(event: KeyboardEvent) {
-  //   if (event.key === 'Enter') {
-  //     event.preventDefault(); // Prevent form submission on Enter
-  //     this.addSubNote();
-  //   }
-  // }
-
-  // removeSubtask(index: number) {
-  //   const subtasks = this.taskForm.get('subNotes') as any;
-  //   subtasks.removeAt(index);
-  // }
   createNote() {
     if (this.taskForm.invalid) {
       return;
@@ -87,8 +64,6 @@ export class CreateNoteComponent {
     this.taskForm = this.fb.group({
       title: [note.title, Validators.required],
       description: [note.description, Validators.required],
-      // subNotes: this.fb.array(note.subNotes),
-      // newSubNote: [''],
     });
   }
 
@@ -97,7 +72,6 @@ export class CreateNoteComponent {
       id: 0,
       title: '',
       description: '',
-      // subNotes: [],
     };
   }
 }
