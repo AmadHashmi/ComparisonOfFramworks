@@ -1,11 +1,18 @@
 // src/components/Header.js
 import React from "react";
-
-const Header = ({ pageTitle, onCreateNote }) => {
+import Button from "@mui/material/Button";
+const Header = ({ onCreateNote }) => {
   return (
     <header className="header">
-      <div className="pageTitle">{pageTitle}</div>
-      <button onClick={onCreateNote}>New Note</button>
+      <h2>Notes App</h2>
+      <Button
+        className="newNoteButton"
+        variant="contained"
+        color="primary"
+        onClick={onCreateNote}
+      >
+        New Note
+      </Button>
     </header>
   );
 };

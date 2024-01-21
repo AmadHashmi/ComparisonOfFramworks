@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+/* header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px; /* Adjust as needed */
+  background-color: #3498db; /* Add your preferred background color */
+  color: #fff; /* Set text color to contrast with the background */
+  font-family: "sans-serif"; /* Use a sans-serif font */
+}
