@@ -18,6 +18,7 @@ const Header = ({ onCreateNote }) => {
         !pathname.includes("view") &&
         !pathname.includes("edit") && (
           <Button
+            id="new-note"
             className="newNoteButton"
             variant="primary"
             color="primary"

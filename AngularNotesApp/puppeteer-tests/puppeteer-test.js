@@ -26,7 +26,7 @@ const puppeteer = require("puppeteer");
       'textarea[formControlName="description"]',
       `Description for Note ${i + 1}`
     );
-
+    // await page.screenshot({ path: `screenshot_${i + 1}.png` });
     // Click the submit button
     await page.click("#submit");
   }
@@ -106,6 +106,7 @@ const puppeteer = require("puppeteer");
     );
 
     // Click the submit button
+
     await page.click("#submit");
   }
 

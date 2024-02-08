@@ -134,7 +134,12 @@ const CreateNote = () => {
           </Form.Group>
 
           {!pathname.includes("view") && ( // Check if URL contains "view"
-            <Button variant="primary" type="submit" className="mt-3">
+            <Button
+              id="submit"
+              variant="primary"
+              type="submit"
+              className="mt-3"
+            >
               {editMode ? "Update Note" : "Create Note"}
             </Button>
           )}
