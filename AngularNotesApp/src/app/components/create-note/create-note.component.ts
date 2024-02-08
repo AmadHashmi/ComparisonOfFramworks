@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  FormArray,
-  FormControl,
-} from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Note } from 'src/app/models/note';
 import { NotesService } from 'src/app/services/notes.service';
@@ -16,6 +10,7 @@ import { NotesService } from 'src/app/services/notes.service';
 })
 export class CreateNoteComponent {
   updateNote = false;
+  viewNote = false;
   taskForm!: FormGroup;
   note!: Note;
   constructor(
@@ -42,6 +37,12 @@ export class CreateNoteComponent {
         this.updateNote = false;
       }
     });
+    if (
+      !(this.router.url.includes('create') || this.router.url.includes('edit'))
+    ) {
+      this.taskForm.disable();
+      this.viewNote = true;
+    }
   }
 
   createNote() {

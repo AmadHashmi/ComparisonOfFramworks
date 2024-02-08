@@ -16,7 +16,10 @@ export class NotesListComponent implements OnInit {
   }
 
   updateNote(taskId: number): void {
-    this.router.navigate(['/create', { id: taskId }]);
+    this.router.navigate(['/edit', taskId]);
+  }
+  viewNote(taskId: number): void {
+    this.router.navigate(['/view', taskId]);
   }
   deleteNote(id: number) {
     this.notesService.deleteNote(id);

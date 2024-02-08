@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-
-const CreateNote = ({ onSubmit, onEdit }) => {
-  const { id, editId } = useParams();
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
+import { Container, Form, Button } from "react-bootstrap";
+const CreateNote = () => {
+  const { id } = useParams();
+  const { pathname } = useLocation();
   const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-  const [editMode, setEditMode] = useState(!!id); // Check if editId exists
+  const [editMode, setEditMode] = useState(!!id);
   const [formData, setFormData] = useState({
     id: "",
     title: "",
@@ -38,7 +41,6 @@ const CreateNote = ({ onSubmit, onEdit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Get the updated note data from the form
     const updatedNote = {
       id: editMode
         ? parseInt(id)
@@ -51,7 +53,6 @@ const CreateNote = ({ onSubmit, onEdit }) => {
 
     console.log(updatedNote);
 
-    // Update local storage with the new or edited note
     const updatedNotes = editMode
       ? storedNotes.map((note) =>
           note.id === parseInt(id) ? updatedNote : note
@@ -63,33 +64,83 @@ const CreateNote = ({ onSubmit, onEdit }) => {
     localStorage.setItem("notes", JSON.stringify(updatedNotes));
     console.log(localStorage);
 
-    // If in edit mode, navigate back to the list page
     navigate("/");
   };
 
+  // return (
+  //   <div>
+  //     <Header></Header>
+  //     <div className="create-form">
+  //       <div>
+  //         {" "}
+  //         <h2>{editMode ? "edit" : "view"}</h2>{" "}
+  //       </div>
+  //       <form onSubmit={handleSubmit}>
+  //         <label>Title:</label>
+  //         <input
+  //           type="text"
+  //           name="title"
+  //           value={formData.title}
+  //           onChange={handleChange}
+  //           required
+  //         />
+  //         <label>Description:</label>
+  //         <input
+  //           type="text"
+  //           name="description"
+  //           value={formData.description}
+  //           onChange={handleChange}
+  //           required
+  //         />
+
+  //         <button type="submit">{editMode ? "Update" : "Save"}</button>
+  //       </form>
+  //     </div>
+  //     <Footer />
+  //   </div>
+  // );
   return (
     <div>
-      <div>{editMode ? "edit" : "view"}</div>
-      <form onSubmit={handleSubmit}>
-        <label>Title:</label>
-        <input
-          type="text"
-          name="title"
-          value={formData.title}
-          onChange={handleChange}
-          required
-        />
-        <label>Description:</label>
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleChange}
-          required
-        />
+      <Header />
+      <Container className="create-form">
+        <Form onSubmit={handleSubmit} className="w-50 mx-auto">
+          {!pathname.includes("view") && (
+            <h2 className="form-title">
+              {editMode ? "Edit Note" : "Create Note"}
+            </h2>
+          )}
+          <Form.Group controlId="formTitle" className="mb-3">
+            <Form.Label className="form-label">Title:</Form.Label>
+            <Form.Control
+              disabled={pathname.includes("view")}
+              type="text"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
+          <Form.Group controlId="formDescription" className="mb-3">
+            <Form.Label className="form-label">Description:</Form.Label>
+            <Form.Control
+              disabled={pathname.includes("view")}
+              as="textarea" // Use textarea instead of text input
+              rows={5} // Set the number of rows for the textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+              required
+            />
+          </Form.Group>
 
-        <button type="submit">{editMode ? "Update" : "Save"}</button>
-      </form>
+          {!pathname.includes("view") && ( // Check if URL contains "view"
+            <Button variant="primary" type="submit" className="mt-3">
+              {editMode ? "Update Note" : "Create Note"}
+            </Button>
+          )}
+        </Form>
+      </Container>
+      <Footer />
     </div>
   );
 };

@@ -1,12 +1,14 @@
 <!-- note-list.component.html -->
 
 <div class="note-list-container" fxLayout="column" fxGap="10px">
+  <h1 style="text-align: center">Your Notes</h1>
   <div
     class="note-item-header"
     fxLayout="row"
     fxLayoutAlign="space-between center"
   >
-    <div fxFlex="70%">Note Title</div>
+    <div fxFlex="40%">Title</div>
+    <div fxFlex="40%">Description</div>
     <div fxFlex="30%">Actions</div>
   </div>
 
@@ -15,14 +17,16 @@
     class="note-item"
     fxLayout="row"
     fxLayoutAlign="space-between center"
+    (click)="viewNote(note.id)"
   >
-    <div fxFlex="70%">{{ note.title }}</div>
-    <div fxFlex="30%" fxLayout="row" fxLayoutGap="5px">
-      <button mat-icon-button color="primary" (click)="updateNote(note.id)">
-        <mat-icon>edit</mat-icon>
+    <div fxFlex="40%">{{ note.title }}</div>
+    <div fxFlex="40%">{{ note.description }}</div>
+    <div fxFlex="30%" class="button-container" fxLayout="row" fxLayoutGap="5px">
+      <button mat-raised-button color="primary" (click)="updateNote(note.id)">
+        Edit
       </button>
-      <button mat-icon-button color="warn" (click)="deleteNote(note.id)">
-        <mat-icon>delete</mat-icon>
+      <button mat-raised-button color="warn" (click)="deleteNote(note.id)">
+        Delete
       </button>
     </div>
   </div>

@@ -2,6 +2,7 @@
 
 .note-list-container {
   margin: 20px;
+  text-align: center;
 }
 
 .note-item-header {
@@ -21,4 +22,10 @@
 
 .note-item:hover {
   background-color: #f9f9f9;
+}
+
+.button-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }

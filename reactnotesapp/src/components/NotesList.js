@@ -1,12 +1,14 @@
 // components/NoteList.js
 import React from "react";
 import { Link } from "react-router-dom";
+import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
 
-const NotesList = ({ notes, onDeleteNote, onEditNote }) => {
+const NotesList = ({ notes, onDeleteNote, onEditNote, onViewNote }) => {
   return (
-    <div>
+    <div className="notes-list">
       <h2>Your Notes</h2>
-      <table>
+      <Table>
         <thead>
           <tr>
             <th>Title</th>
@@ -17,18 +19,20 @@ const NotesList = ({ notes, onDeleteNote, onEditNote }) => {
         <tbody>
           {notes.map((note) => (
             <tr key={note.id}>
+              <td onClick={() => onViewNote(note.id)}>{note.title}</td>
+              <td onClick={() => onViewNote(note.id)}>{note.description}</td>
               <td>
-                <Link to={`/notes/${note.id}`}>{note.title}</Link>
-              </td>
-              <td>{note.description}</td>
-              <td>
-                <button onClick={() => onEditNote(note.id)}>Edit</button>
-                <button onClick={() => onDeleteNote(note.id)}>Delete</button>
+                <Button onClick={() => onEditNote(note.id)} className="m-2">
+                  Edit
+                </Button>
+                <Button onClick={() => onDeleteNote(note.id)} variant="danger">
+                  Delete
+                </Button>
               </td>
             </tr>
           ))}
         </tbody>
-      </table>
+      </Table>
     </div>
   );
 };
