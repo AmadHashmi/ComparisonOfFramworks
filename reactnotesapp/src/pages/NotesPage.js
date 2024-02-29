@@ -8,9 +8,27 @@ const NotesPage = () => {
   const navigate = useNavigate();
   const [notes, setNotes] = useState([]);
 
+  // useEffect(() => {
+  //   const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
+  //   setNotes(storedNotes);
+  // }, []);
   useEffect(() => {
     const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-    setNotes(storedNotes);
+    if (storedNotes.length === 0) {
+      // Initialize with 100 notes if localStorage is empty
+      const initialNotes = [];
+      for (let i = 1; i <= 1000; i++) {
+        initialNotes.push({
+          id: i,
+          title: `Note ${i}`,
+          description: `Description for note ${i}`,
+        });
+      }
+      localStorage.setItem("notes", JSON.stringify(initialNotes));
+      setNotes(initialNotes);
+    } else {
+      setNotes(storedNotes);
+    }
   }, []);
   const handleCreateNote = () => {
     navigate("/notes/new");

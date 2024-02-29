@@ -22,10 +22,20 @@
     <div fxFlex="40%">{{ note.title }}</div>
     <div fxFlex="40%">{{ note.description }}</div>
     <div fxFlex="30%" class="button-container" fxLayout="row" fxLayoutGap="5px">
-      <button mat-raised-button color="primary" (click)="updateNote(note.id)">
+      <button
+        [id]="'update-note' + note.id"
+        mat-raised-button
+        color="primary"
+        (click)="updateNote(note.id)"
+      >
         Edit
       </button>
-      <button mat-raised-button color="warn" (click)="deleteNote(note.id)">
+      <button
+        [id]="'delete-note' + note.id"
+        mat-raised-button
+        color="warn"
+        (click)="deleteNote(note.id)"
+      >
         Delete
       </button>
     </div>

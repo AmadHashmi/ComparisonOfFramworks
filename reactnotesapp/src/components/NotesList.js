@@ -22,10 +22,18 @@ const NotesList = ({ notes, onDeleteNote, onEditNote, onViewNote }) => {
               <td onClick={() => onViewNote(note.id)}>{note.title}</td>
               <td onClick={() => onViewNote(note.id)}>{note.description}</td>
               <td>
-                <Button onClick={() => onEditNote(note.id)} className="m-2">
+                <Button
+                  id={"update-note" + note.id}
+                  onClick={() => onEditNote(note.id)}
+                  className="m-2"
+                >
                   Edit
                 </Button>
-                <Button onClick={() => onDeleteNote(note.id)} variant="danger">
+                <Button
+                  id={"delete-note" + note.id}
+                  onClick={() => onDeleteNote(note.id)}
+                  variant="danger"
+                >
                   Delete
                 </Button>
               </td>
