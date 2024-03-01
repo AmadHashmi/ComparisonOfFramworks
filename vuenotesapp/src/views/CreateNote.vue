@@ -1,27 +1,30 @@
 <template>
   <div class="note">
-    <h1>This is a {{ isEdit ? "Edit" : "Create" }} Note</h1>
-    <form @submit.prevent="handleSubmit">
-      <div>
-        <label for="title">Title:</label>
+    <form @submit.prevent="handleSubmit" class="w-50">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
         <input
           type="text"
           id="title"
           v-model="note.title"
           :disabled="disabled"
+          class="form-control"
           required
         />
       </div>
-      <div>
-        <label for="description">Description:</label>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
         <textarea
           id="description"
           v-model="note.description"
           :disabled="disabled"
+          class="form-control"
           required
         ></textarea>
       </div>
-      <button type="submit" :disabled="disabled">{{ buttonLabel }}</button>
+      <button type="submit" :disabled="disabled" class="btn btn-primary">
+        {{ buttonLabel }}
+      </button>
     </form>
   </div>
 </template>
@@ -37,7 +40,7 @@ const route = router.currentRoute;
 const isEdit = route.value.name === "edit" && route.value.params.id;
 const isView = route.value.name === "note" && route.value.params.id;
 const isCreate = !isEdit && !isView;
-const disabled = isView; // Disable inputs for viewing
+const disabled = isView;
 
 let buttonLabel = isEdit ? "Edit" : "Add Note";
 
@@ -101,7 +104,7 @@ onMounted(() => {
 
 <style scoped>
 .note {
-  min-height: 100vh;
+  min-height: 80vh;
   display: flex;
   flex-direction: column;
   align-items: center;
