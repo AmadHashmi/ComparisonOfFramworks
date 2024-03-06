@@ -17,10 +17,18 @@
               <!-- Center the buttons -->
               <div class="d-flex justify-content-center gap-2">
                 <!-- Add space between buttons -->
-                <button @click="handleUpdate(note.id)" class="btn btn-primary">
+                <button
+                  @click="handleUpdate(note.id)"
+                  class="btn btn-primary"
+                  :id="'update-note' + note.id"
+                >
                   Update
                 </button>
-                <button @click="handleDelete(note.id)" class="btn btn-danger">
+                <button
+                  @click="handleDelete(note.id)"
+                  class="btn btn-danger"
+                  :id="'delete-note' + note.id"
+                >
                   Delete
                 </button>
               </div>

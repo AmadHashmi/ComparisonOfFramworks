@@ -5,7 +5,9 @@
         <router-link :to="{ name: 'notes' }" class="text-decoration-none">
           <h2 class="text-black">{{ pageTitle }}</h2>
         </router-link>
-        <button class="btn btn-primary" @click="handleNewNote">New Note</button>
+        <button id="new-note" class="btn btn-primary" @click="handleNewNote">
+          New Note
+        </button>
       </div>
     </div>
   </header>

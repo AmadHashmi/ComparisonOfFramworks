@@ -66,39 +66,6 @@ const CreateNote = () => {
 
     navigate("/");
   };
-
-  // return (
-  //   <div>
-  //     <Header></Header>
-  //     <div className="create-form">
-  //       <div>
-  //         {" "}
-  //         <h2>{editMode ? "edit" : "view"}</h2>{" "}
-  //       </div>
-  //       <form onSubmit={handleSubmit}>
-  //         <label>Title:</label>
-  //         <input
-  //           type="text"
-  //           name="title"
-  //           value={formData.title}
-  //           onChange={handleChange}
-  //           required
-  //         />
-  //         <label>Description:</label>
-  //         <input
-  //           type="text"
-  //           name="description"
-  //           value={formData.description}
-  //           onChange={handleChange}
-  //           required
-  //         />
-
-  //         <button type="submit">{editMode ? "Update" : "Save"}</button>
-  //       </form>
-  //     </div>
-  //     <Footer />
-  //   </div>
-  // );
   return (
     <div>
       <Header />
@@ -124,8 +91,8 @@ const CreateNote = () => {
             <Form.Label className="form-label">Description:</Form.Label>
             <Form.Control
               disabled={pathname.includes("view")}
-              as="textarea" // Use textarea instead of text input
-              rows={5} // Set the number of rows for the textarea
+              as="textarea"
+              rows={5}
               name="description"
               value={formData.description}
               onChange={handleChange}
@@ -133,7 +100,7 @@ const CreateNote = () => {
             />
           </Form.Group>
 
-          {!pathname.includes("view") && ( // Check if URL contains "view"
+          {!pathname.includes("view") && (
             <Button
               id="submit"
               variant="primary"

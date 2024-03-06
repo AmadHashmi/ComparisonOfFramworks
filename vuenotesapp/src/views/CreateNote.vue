@@ -22,7 +22,12 @@
           required
         ></textarea>
       </div>
-      <button type="submit" :disabled="disabled" class="btn btn-primary">
+      <button
+        id="submit"
+        type="submit"
+        :disabled="disabled"
+        class="btn btn-primary"
+      >
         {{ buttonLabel }}
       </button>
     </form>
