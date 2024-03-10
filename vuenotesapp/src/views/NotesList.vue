@@ -40,7 +40,7 @@
   </div>
 </template>
 
-<script setup>
+<!-- <script setup>
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
 
@@ -67,6 +67,55 @@ const handleDelete = (id) => {
 
 onMounted(() => {
   reloadNotes();
+});
+</script> -->
+
+<script setup>
+import { ref, onMounted } from "vue";
+import { useRouter } from "vue-router";
+
+const notes = ref([]);
+const router = useRouter();
+
+const getNotesFromStorage = () => {
+  return JSON.parse(localStorage.getItem("notes") || "[]");
+};
+
+const saveNotesToStorage = (notes) => {
+  localStorage.setItem("notes", JSON.stringify(notes));
+};
+
+const reloadNotes = () => {
+  notes.value = getNotesFromStorage();
+};
+
+const initializeNotes = () => {
+  if (notes.value.length === 0) {
+    const initialNotes = [];
+    for (let i = 1; i <= 50; i++) {
+      initialNotes.push({
+        id: i,
+        title: `Note ${i}`,
+        description: `Description of Note ${i}`,
+      });
+    }
+    saveNotesToStorage(initialNotes);
+    reloadNotes();
+  }
+};
+
+const handleUpdate = (id) => {
+  router.push({ name: "edit", params: { id } });
+};
+
+const handleDelete = (id) => {
+  const updatedNotes = notes.value.filter((note) => note.id !== id);
+  saveNotesToStorage(updatedNotes);
+  reloadNotes();
+};
+
+onMounted(() => {
+  initializeNotes();
 });
 </script>
 
