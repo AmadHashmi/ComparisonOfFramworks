@@ -6,12 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateNoteComponent } from './components/create-note/create-note.component';
 import { NotesListComponent } from './components/notes-list/notes-list.component';
-import { NoteComponent } from './components/note/note.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-// material imports
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -25,7 +23,6 @@ import { MatIconModule } from '@angular/material/icon';
     AppComponent,
     CreateNoteComponent,
     NotesListComponent,
-    NoteComponent,
     HeaderComponent,
     FooterComponent,
   ],
@@ -35,7 +32,6 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
-    //imports for material
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,

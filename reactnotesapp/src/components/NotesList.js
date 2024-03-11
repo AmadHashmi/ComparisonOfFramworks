@@ -1,6 +1,4 @@
-// components/NoteList.js
 import React from "react";
-import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import Button from "react-bootstrap/Button";
 

@@ -1,4 +1,3 @@
-// src/components/Footer.js
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -7,15 +6,9 @@ import { useNavigate } from "react-router";
 const NotesPage = () => {
   const navigate = useNavigate();
   const [notes, setNotes] = useState([]);
-
-  // useEffect(() => {
-  //   const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
-  //   setNotes(storedNotes);
-  // }, []);
   useEffect(() => {
     const storedNotes = JSON.parse(localStorage.getItem("notes")) || [];
     if (storedNotes.length === 0) {
-      // Initialize with 100 notes if localStorage is empty
       const initialNotes = [];
       for (let i = 1; i <= 1000; i++) {
         initialNotes.push({
