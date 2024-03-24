@@ -92,7 +92,7 @@ const reloadNotes = () => {
 const initializeNotes = () => {
   if (notes.value.length === 0) {
     const initialNotes = [];
-    for (let i = 1; i <= 50; i++) {
+    for (let i = 1; i <= 1000; i++) {
       initialNotes.push({
         id: i,
         title: `Note ${i}`,
@@ -116,6 +116,7 @@ const handleDelete = (id) => {
 
 onMounted(() => {
   initializeNotes();
+  // reloadNotes();
 });
 </script>
 

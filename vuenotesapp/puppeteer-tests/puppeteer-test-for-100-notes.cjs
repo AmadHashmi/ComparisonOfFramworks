@@ -44,8 +44,6 @@ const puppeteer = require("puppeteer");
     await page.type('textarea[id="description"]', ` updated`);
 
     await page.click("#submit");
-
-    // await page.screenshot({ path: `update-note${i + 1}.png` });
   }
 
   await page.screenshot({ path: "updated100.png" });
@@ -61,7 +59,7 @@ const puppeteer = require("puppeteer");
   await page.screenshot({ path: "delete50.png" });
   const deleteEndTime = Date.now();
   const deleteElapsedTime = deleteEndTime - deleteStartTime;
-  console.log(`Time taken to delete 50 notes: ${deleteElapsedTime} ms`);
+  console.log(`Time taken to delete 100 notes: ${deleteElapsedTime} ms`);
 
   await browser.close();
 })();

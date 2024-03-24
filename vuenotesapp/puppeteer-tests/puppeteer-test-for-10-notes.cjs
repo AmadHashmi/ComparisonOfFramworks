@@ -24,6 +24,7 @@ const puppeteer = require("puppeteer");
       'textarea[id="description"]',
       `Description for Note ${i + 1}`
     );
+
     await page.click("#submit");
   }
   await page.screenshot({ path: "created10.png" });

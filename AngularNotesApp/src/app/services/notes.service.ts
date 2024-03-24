@@ -17,7 +17,7 @@ export class NotesService {
       this.noteSubject.next(this.notes);
     } else {
       this.notes = [];
-      for (let i = 1; i <= 100; i++) {
+      for (let i = 1; i <= 1000; i++) {
         this.notes.push({
           id: i,
           title: `Note ${i}`,
@@ -26,8 +26,7 @@ export class NotesService {
       }
       this.updateLocalStorage();
     }
-
-    // this.noteSubject.next(this.notes);
+    this.noteSubject.next(this.notes);
   }
 
   getAllNotes(): Observable<Note[]> {

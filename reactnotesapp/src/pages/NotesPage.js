@@ -22,6 +22,7 @@ const NotesPage = () => {
     } else {
       setNotes(storedNotes);
     }
+    // setNotes(storedNotes);
   }, []);
   const handleCreateNote = () => {
     navigate("/notes/new");
